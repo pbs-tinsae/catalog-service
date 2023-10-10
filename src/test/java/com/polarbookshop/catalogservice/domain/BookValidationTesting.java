@@ -20,14 +20,14 @@ public class BookValidationTesting {
 
     @Test
     void whenAllFieldsCorrectThenValidationSucceeds() {
-        Book book = new Book("1234567890", "Title", "Author", 9.90);
+        Book book =  Book.of("1234567890", "Title", "Author", 9.90);
         Set<ConstraintViolation<Book>> violationSet = validator.validate(book);
         Assertions.assertThat(violationSet).isEmpty();
     }
 
     @Test
     void whenIsbnDefinedButIncorrectThenValidationFails(){
-        Book book = new Book("123456789", "Title", "Author", 9.90);
+        Book book =  Book.of("123456789", "Title", "Author", 9.90);
         Set<ConstraintViolation<Book>> violationSet = validator.validate(book);
         Assertions.assertThat(violationSet).hasSize(1);
         ConstraintViolation<Book> violation = violationSet.iterator().next();

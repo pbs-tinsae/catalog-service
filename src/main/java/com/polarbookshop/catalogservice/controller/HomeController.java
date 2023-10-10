@@ -1,6 +1,7 @@
 package com.polarbookshop.catalogservice.controller;
 
 
+import com.polarbookshop.catalogservice.config.PolarProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,8 +10,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class HomeController {
 
+
+    private final PolarProperties polarProperties;
+
+    public HomeController(PolarProperties polarProperties) {
+        this.polarProperties = polarProperties;
+    }
+
     @GetMapping
     public String greeting() {
-        return "Welcome to the Polar Bookshop";
+        return polarProperties.getGreeting();
     }
 }

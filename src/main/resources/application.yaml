@@ -6,3 +6,35 @@ server:
     threads:
       max: 100
       min-spare: 5
+polar:
+  greeting: Welcome to Polar
+spring:
+  application:
+    name: catalog-service
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+      request-connect-timeout: 5000
+      request-read-timeout: 5000
+      fail-fast: true
+      retry:
+        max-attempts: 6
+        max-interval: 2000
+        multiplier: 1.1
+        initial-interval: 1000
+  datasource:
+    url: jdbc:postgresql://localhost:5432/polardb_catalog
+    username: user
+    password: password
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 5
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "refresh"
