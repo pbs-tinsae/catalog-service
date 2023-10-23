@@ -28,7 +28,7 @@ public class BookRepositoryJdbcTests {
     @Test
     void findBookByIsbnWhenExisting() {
         var bookIsbn = "1234567890";
-        var book = Book.of(bookIsbn, "Title", "Author", 9.90);
+        var book = Book.of(bookIsbn, "Title", "Author", "manning",9.90);
         jdbcAggregateTemplate.insert(book);
         Optional<Book> actualBook = bookRepository.findByIsbn(bookIsbn);
         assertThat(actualBook).isPresent();

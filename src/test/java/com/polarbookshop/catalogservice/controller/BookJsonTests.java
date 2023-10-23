@@ -18,7 +18,7 @@ public class BookJsonTests {
 
     @Test
     void testSerialize() throws Exception {
-        Book book =  Book.of("1234567890", "Title", "Author", 9.90);
+        Book book =  Book.of("1234567890", "Title", "Author", "manning",9.90);
 
         JsonContent<Book> jsonContent = json.write(book);
 
